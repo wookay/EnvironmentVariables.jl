@@ -3,12 +3,17 @@ uuid = "2b0a9d13-a158-419f-bb46-acc00381538d"
 version = "0.1.0"
 authors = ["WooKyoung Noh <wookay.noh@gmail.com>"]
 
+[sources]
+PathStrings = {url = "https://github.com/wookay/PathStrings.jl", rev = "main"}
+
 [compat]
 Jive = "0.3"
+PathStrings = "0.1"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 Jive = "ba5e3d4b-8524-549f-bc71-e76ad9e9deed"
+PathStrings = "313e5630-e80e-42f4-9e3f-8bfd502c4f6a"
 
 [targets]
-test = ["Test", "Jive"]
+test = ["Test", "Jive", "PathStrings"]
