@@ -1,0 +1,8 @@
+[deps]
+PathStrings = "313e5630-e80e-42f4-9e3f-8bfd502c4f6a"
+
+[sources]
+PathStrings = {url = "https://github.com/wookay/PathStrings.jl", rev = "main"}
+
+[compat]
+PathStrings = "0.1"
