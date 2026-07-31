@@ -1,6 +1,6 @@
 module EnvironmentVariables
 
-export EnvVarString, @EnvVar_str
+export EnvKeyString, @EnvKey_str
 
 include("types.jl")
 

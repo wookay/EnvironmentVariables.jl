@@ -1,23 +1,23 @@
 # module EnvironmentVariables
 
-struct EnvVarEmptyNameError <: Exception
+struct EnvKeyEmptyNameError <: Exception
 end
 
-struct EnvVarString
+struct EnvKeyString
     s::String
 end
 
-function valid_envvarstring(s)
+function valid_envkeystring(s)
     if isempty(s)
-        throw(EnvVarEmptyNameError())
+        throw(EnvKeyEmptyNameError())
     else
-        EnvVarString(s)
+        EnvKeyString(s)
     end
 end
 
-macro EnvVar_str(s)
+macro EnvKey_str(s)
     quote
-        valid_envvarstring($s)
+        valid_envkeystring($s)
     end
 end
 
