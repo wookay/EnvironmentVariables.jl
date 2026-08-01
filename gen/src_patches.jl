@@ -2,6 +2,8 @@ using EnvironmentVariables
 using .EnvironmentVariables: Patch
 using PathStrings
 
+# getenv(
+
 const SRC_PATCHES = Vector{Patch}([
     # v1.14
     Patch(v"1.14.0-DEV.2614", # julia commit 6aa38364cb    Add the objcache (LMDB-based cache for LLVM compilation)
