@@ -23,6 +23,25 @@ macro EnvKey_str(s)
     end
 end
 
+macro EnvVar(a::Expr, b::Expr)
+    default = nothing
+    if b.head === :(:=)
+        name, val = (b.args)
+        if name === :default
+            default = val
+        end
+    end
+    if a.head === :(::)
+        k, T = (a.args)
+        key = String(k)
+        if T === :Bool
+            :(Base.get_bool_env($key, $default))
+        elseif T === :Int
+            :(Base.parse(Int, get(ENV, $key, string($default))))
+        end
+    end
+end
+
 struct Patch
     version::VersionNumber
     filepath::PathString
