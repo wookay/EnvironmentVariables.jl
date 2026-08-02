@@ -17,7 +17,7 @@ function gen_patches(title::String, patches)
         push!(contents, Header{3}(patch.version))
         push!(contents, Paragraph(patch.filepath.s))
         for pair in patch.key_pairs
-            push!(contents, List(Code(pair.first.s)))
+            push!(contents, List(Code("", pair.first.s)))
         end
     end
     contents
@@ -38,16 +38,17 @@ function write_doc_stdlib_patches(name::Symbol)
             ("Test", STDLIB_Test_PATCHES)
             ("REPL", STDLIB_REPL_PATCHES)]
         contents = gen_patches(title, patches)
-        sub = [Header{1}(title), contents...]
+        sub = [Header{2}(title), contents...]
         push!(subs, sub)
     end
-    md = MD(subs...)
-    @info "save $name" filepath
+    title = "STDLIB ENV variables"
+    md = MD(Header{1}(title), subs...)
+    @info "save $title" filepath
     write(filepath, string(generated_comments, md))
 end
 
 if true # false
-write_doc_patches(SRC_PATCHES, :src_patches, "Src Patches")
-write_doc_patches(BASE_PATCHES, :base_patches, "Base Patches")
+write_doc_patches(SRC_PATCHES, :src_patches, "src/ ENV variables")
+write_doc_patches(BASE_PATCHES, :base_patches, "base/ ENV variables")
 write_doc_stdlib_patches(:stdlib_patches)
 end

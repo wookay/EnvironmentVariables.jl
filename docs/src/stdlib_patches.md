@@ -1,7 +1,9 @@
 ```@raw html
 <!-- generated -->
 ```
-# Test
+# STDLIB ENV variables
+
+## Test
 
 ### v"1.13.0-DEV.1075"
 
@@ -27,7 +29,7 @@ stdlib/Test/src/Test.jl
     JULIA_TEST_FAILFAST
     ```
 
-# REPL
+## REPL
 
 ### v"1.11.0-DEV.1261"
 

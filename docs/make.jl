@@ -15,8 +15,8 @@ makedocs(
     authors = "WooKyoung Noh",
     pages = Any[
         "Home" => "index.md",
-        "Src Patches" => "src_patches.md",
-        "Base Patches" => "base_patches.md",
-        "STDLIB Patches" => "stdlib_patches.md",
+        "src/ ENV variables" => "src_patches.md",
+        "base/ ENV variables" => "base_patches.md",
+        "STDLIB ENV variables" => "stdlib_patches.md",
     ],
 )
