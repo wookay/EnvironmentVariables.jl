@@ -1,0 +1,53 @@
+using EnvironmentVariables
+include(normpath(@__DIR__, "src_patches.jl"))
+include(normpath(@__DIR__, "base_patches.jl"))
+include(normpath(@__DIR__, "stdlib_patches.jl"))
+
+using Markdown: MD, Header, Table, Code, List, Paragraph, htmlesc, @md_str
+
+const generated_comments = """
+```@raw html
+<!-- generated -->
+```
+"""
+
+function gen_patches(title::String, patches)
+    contents = []
+    for patch in patches
+        push!(contents, Header{3}(patch.version))
+        push!(contents, Paragraph(patch.filepath.s))
+        for pair in patch.key_pairs
+            push!(contents, List(Code(pair.first.s)))
+        end
+    end
+    contents
+end
+
+function write_doc_patches(patches, name::Symbol, title::String)
+    filepath = normpath(@__DIR__, "../docs/src/$name.md")
+    contents = gen_patches(title, patches)
+    md = MD(Header{1}(title), contents...)
+    @info "save $title" filepath
+    write(filepath, string(generated_comments, md))
+end
+
+function write_doc_stdlib_patches(name::Symbol)
+    filepath = normpath(@__DIR__, "../docs/src/$name.md")
+    subs = []
+    for (title, patches) in [
+            ("Test", STDLIB_Test_PATCHES)
+            ("REPL", STDLIB_REPL_PATCHES)]
+        contents = gen_patches(title, patches)
+        sub = [Header{1}(title), contents...]
+        push!(subs, sub)
+    end
+    md = MD(subs...)
+    @info "save $name" filepath
+    write(filepath, string(generated_comments, md))
+end
+
+if true # false
+write_doc_patches(SRC_PATCHES, :src_patches, "Src Patches")
+write_doc_patches(BASE_PATCHES, :base_patches, "Base Patches")
+write_doc_stdlib_patches(:stdlib_patches)
+end
