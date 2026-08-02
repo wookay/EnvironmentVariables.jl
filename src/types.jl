@@ -23,6 +23,20 @@ macro EnvKey_str(s)
     end
 end
 
+macro EnvVar(a::Expr)
+    if a.head === :(::)
+        k, T = (a.args)
+        key = String(k)
+        if T === :Bool
+            :(Base.get_bool_env($key, false))
+        elseif T === :String
+            :(get(ENV, $key, ""))
+        elseif T === Symbol(Union{Nothing, String})
+            :(get(ENV, $key, nothing))
+        end
+    end
+end
+
 macro EnvVar(a::Expr, b::Expr)
     default = nothing
     if b.head === :(:=)
@@ -37,7 +51,12 @@ macro EnvVar(a::Expr, b::Expr)
         if T === :Bool
             :(Base.get_bool_env($key, $default))
         elseif T === :Int
+            @assert default !== nothing
             :(Base.parse(Int, get(ENV, $key, string($default))))
+        elseif T === :String
+            :(get(ENV, $key, $default))
+        elseif T === Symbol(Union{Nothing, String})
+            :(get(ENV, $key, $default))
         end
     end
 end
