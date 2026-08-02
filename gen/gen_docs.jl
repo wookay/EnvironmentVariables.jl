@@ -16,8 +16,14 @@ function gen_patches(title::String, patches)
     for patch in patches
         push!(contents, Header{3}(patch.version))
         push!(contents, Paragraph(patch.filepath.s))
+        env_key_added = []
         for pair in patch.key_pairs
-            push!(contents, List(Code("", pair.first.s)))
+            env_key = pair.first.s
+            if env_key ∈ env_key_added
+            else
+                push!(contents, List(Code("", env_key)))
+                push!(env_key_added, env_key)
+            end
         end
     end
     contents

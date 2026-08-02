@@ -20,10 +20,6 @@ base/precompilation.jl
     ```
 
   * ```
-    JULIA_PRECOMPILE_JOBSERVER
-    ```
-
-  * ```
     JULIA_PRECOMPILE_THREADS
     ```
 
@@ -211,10 +207,6 @@ base/loading.jl
     JULIA_CPU_TARGET
     ```
 
-  * ```
-    JULIA_CPU_TARGET
-    ```
-
 ### v"1.10.0-DEV.204"
 
 base/linking.jl
@@ -298,10 +290,6 @@ base/sysinfo.jl
 ### v"0.7.0-DEV.4898"
 
 base/loading.jl
-
-  * ```
-    JULIA_LOAD_PATH
-    ```
 
   * ```
     JULIA_LOAD_PATH
