@@ -99,6 +99,10 @@ const BASE_PATCHES = Vector{Patch}([
         EnvKey"FORCE_COLOR" => "function colored_text(opts::JLOptions)",
         EnvKey"NO_COLOR" => "function colored_text(opts::JLOptions)"
     ),
+    Patch(v"1.12.0-DEV.505",  # julia commit 3638c84f45    move ConsoleLogger into Base
+        Path"base/logging/logging.jl",
+        EnvKey"JULIA_DEBUG" => "global Base.@constprop :none function env_override_minlevel(group, _module)"
+    ),
     Patch(v"1.12.0-DEV.151",  # julia commit 78351b5c47    Use Base parallel precompilation to build stdlibs
         Path"base/util.jl",
         EnvKey"JULIA_TESTS" => signature_base_util_runtests
