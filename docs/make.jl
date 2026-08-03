@@ -5,6 +5,7 @@ using .EnvironmentVariables: Patch
 makedocs(
     build = joinpath(@__DIR__, "local" in ARGS ? "build_local" : "build"),
     modules = [EnvironmentVariables],
+    checkdocs_ignored_modules = [EnvironmentVariables.Docs],
     clean = false,
     format = Documenter.HTML(
         prettyurls = !("local" in ARGS),
