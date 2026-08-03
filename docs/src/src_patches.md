@@ -1,7 +1,9 @@
 ```@raw html
 <!-- generated -->
 ```
-# src/ ENV variables
+# src/ cli/ ENV variables
+
+## src/
 
 ### v"1.14.0-DEV.2614"
 
@@ -189,4 +191,22 @@ src/codegen.cpp
 
   * ```
     ENABLE_JITPROFILING
+    ```
+
+## cli/
+
+### v"1.14.0-DEV.2836"
+
+cli/loader_lib.c
+
+  * ```
+    JULIA_LOAD_CODEGEN_LIB
+    ```
+
+### v"1.9.0-DEV.1779"
+
+cli/loader_lib.c
+
+  * ```
+    JULIA_PROBE_LIBSTDCXX
     ```

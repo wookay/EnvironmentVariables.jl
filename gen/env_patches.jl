@@ -4,6 +4,7 @@ include("stdlib_patches.jl")
 
 const ENV_PATCHES = vcat(
     SRC_PATCHES,
+    CLI_PATCHES,
     BASE_PATCHES,
     STDLIB_PATCHES,
 )

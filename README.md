@@ -5,6 +5,10 @@
 |  [![][docs-latest-img]][docs-latest-url]  |  [![][actions-img]][actions-url]  |
 
 
+* Environment Variables · The Julia Language
+  https://docs.julialang.org/en/v1/manual/environment-variables/
+
+
 [docs-latest-img]: https://img.shields.io/badge/docs-latest-blue.svg
 [docs-latest-url]: https://wookay.github.io/docs/EnvironmentVariables.jl/
 

@@ -112,3 +112,20 @@ static SmallVector<AOTOutputs, 16> add_output(Module &M, TargetMachine &TM, Stri
         EnvKey"ENABLE_JITPROFILING" => """extern "C" void jl_init_llvm(void)"""
     ),
 ])
+
+
+# env_var_bool(
+
+const CLI_PATCHES = Vector{Patch}([
+    # v1.14
+    Patch(v"1.14.0-DEV.2836", # julia commit efbb50fdff    cli: add `JULIA_LOAD_CODEGEN_LIB` environment variable to disable `libjulia-codegen`
+        Path"cli/loader_lib.c",
+        EnvKey"JULIA_LOAD_CODEGEN_LIB" => "__attribute__((constructor)) void jl_load_libjulia_internal(void)"
+    ),
+
+    # v1.9
+    Patch(v"1.9.0-DEV.1779",  # julia commit eb708d62f8    Probe and dlopen() the correct libstdc++
+        Path"cli/loader_lib.c",
+        EnvKey"JULIA_PROBE_LIBSTDCXX" => "__attribute__((constructor)) void jl_load_libjulia_internal(void)"
+    ),
+])

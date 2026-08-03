@@ -29,10 +29,33 @@ function gen_patches(title::String, patches)
     contents
 end
 
-function write_doc_patches(patches, name::Symbol, title::String)
+function write_doc_src_patches(name::Symbol)
     filepath = normpath(@__DIR__, "../docs/src/$name.md")
-    contents = gen_patches(title, patches)
-    md = MD(Header{1}(title), contents...)
+    subs = []
+    for (title, patches) in [
+            ("src/", SRC_PATCHES)
+            ("cli/", CLI_PATCHES)]
+        contents = gen_patches(title, patches)
+        sub = [Header{2}(title), contents...]
+        push!(subs, sub)
+    end
+    title = "src/ cli/ ENV variables"
+    md = MD(Header{1}(title), subs...)
+    @info "save $title" filepath
+    write(filepath, string(generated_comments, md))
+end
+
+function write_doc_base_patches(name::Symbol)
+    filepath = normpath(@__DIR__, "../docs/src/$name.md")
+    subs = []
+    for (title, patches) in [
+            ("base/", BASE_PATCHES)]
+        contents = gen_patches(title, patches)
+        sub = [Header{2}(title), contents...]
+        push!(subs, sub)
+    end
+    title = "base/ ENV variables"
+    md = MD(Header{1}(title), subs...)
     @info "save $title" filepath
     write(filepath, string(generated_comments, md))
 end
@@ -54,7 +77,7 @@ function write_doc_stdlib_patches(name::Symbol)
 end
 
 if true # false
-write_doc_patches(SRC_PATCHES, :src_patches, "src/ ENV variables")
-write_doc_patches(BASE_PATCHES, :base_patches, "base/ ENV variables")
+write_doc_src_patches(:src_patches)
+write_doc_base_patches(:base_patches)
 write_doc_stdlib_patches(:stdlib_patches)
 end
