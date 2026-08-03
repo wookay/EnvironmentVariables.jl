@@ -8,7 +8,7 @@
 * Environment Variables · The Julia Language
   https://docs.julialang.org/en/v1/manual/environment-variables/
 
-```julia
+```julia-repl
 julia> using EnvironmentVariables.Docs
 
 julia> JULIA_EDITOR
