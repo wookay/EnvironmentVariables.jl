@@ -90,7 +90,6 @@ const JULIA_HISTORY = EnvKeyString("JULIA_HISTORY")
 const JULIA_MAX_NUM_PRECOMPILE_FILES = EnvKeyString("JULIA_MAX_NUM_PRECOMPILE_FILES")
 
 """If set to true, linker commands will be displayed during precompilation.
-## Pkg.jl
 """
 const JULIA_VERBOSE_LINKING = EnvKeyString("JULIA_VERBOSE_LINKING")
 
@@ -173,7 +172,6 @@ const JULIA_PKG_PRESERVE_TIERED_INSTALLED = EnvKeyString("JULIA_PKG_PRESERVE_TIE
 !!! compat "Julia 1.12"
     This environment variable is only supported on Julia 1.12 and above.
 
-## Network transport
 """
 const JULIA_PKG_GC_AUTO = EnvKeyString("JULIA_PKG_GC_AUTO")
 
@@ -191,7 +189,6 @@ const JULIA_SSH_NO_VERIFY_HOSTS = EnvKeyString("JULIA_SSH_NO_VERIFY_HOSTS")
 const JULIA_ALWAYS_VERIFY_HOSTS = EnvKeyString("JULIA_ALWAYS_VERIFY_HOSTS")
 
 """Specify the file or directory containing the certificate authority roots. See [`NetworkOptions.ca_roots`](https://github.com/JuliaLang/NetworkOptions.jl#ca_roots)
-## External applications
 """
 const JULIA_SSL_CA_ROOTS_PATH = EnvKeyString("JULIA_SSL_CA_ROOTS_PATH")
 
@@ -205,7 +202,6 @@ const JULIA_SHELL = EnvKeyString("JULIA_SHELL")
 """The editor returned by `InteractiveUtils.editor()` and used in, e.g., [`InteractiveUtils.edit`](@ref), referring to the command of the preferred editor, for instance `vim`.
 `\$JULIA_EDITOR` takes precedence over `\$VISUAL`, which in turn takes precedence over `\$EDITOR`. If none of these environment variables is set, then the editor is taken to be `open` on Windows and OS X, or `/etc/alternatives/editor` if it exists, or `emacs` otherwise.
 To use Visual Studio Code on Windows, set `\$JULIA_EDITOR` to `code.cmd`.
-## Parallelization
 """
 const JULIA_EDITOR = EnvKeyString("JULIA_EDITOR")
 
@@ -263,7 +259,6 @@ const JULIA_IMAGE_TIMINGS = EnvKeyString("JULIA_IMAGE_TIMINGS")
 
 """If set to anything besides `0`, then Julia's thread policy is consistent with running on a dedicated machine: each thread in the default threadpool is affinitized.  [Interactive threads](@ref man-threadpools) remain under the control of the operating system scheduler.
 Otherwise, Julia lets the operating system handle thread policy.
-## Garbage Collection
 """
 const JULIA_EXCLUSIVE = EnvKeyString("JULIA_EXCLUSIVE")
 
@@ -278,8 +273,6 @@ Forces garbage collection if memory usage is higher than the given value. The va
 - %  (percentage of physical memory)
 ```
 For example, `JULIA_HEAP_SIZE_HINT=1G` would provide a 1 GB heap size hint to the garbage collector.
-## REPL formatting
-Environment variables that determine how REPL output should be formatted at the terminal. The `JULIA_*_COLOR` variables should be set to [ANSI terminal escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code). Julia provides a high-level interface with much of the same functionality; see the section on [The Julia REPL](@ref).
 """
 const JULIA_HEAP_SIZE_HINT = EnvKeyString("JULIA_HEAP_SIZE_HINT")
 
@@ -308,7 +301,6 @@ const JULIA_ANSWER_COLOR = EnvKeyString("JULIA_ANSWER_COLOR")
 const NO_COLOR = EnvKeyString("NO_COLOR")
 
 """When this variable is present and not an empty string (regardless of its value) then colored text will be enabled on the REPL. Can be overridden with the flag `--color=no`. This environment variable is [commonly recognized by command-line applications](https://force-color.org/).
-## System and Package Image Building
 """
 const FORCE_COLOR = EnvKeyString("FORCE_COLOR")
 
@@ -336,7 +328,6 @@ A few special features are supported:
 5. `min_size`
 
     Optimize only for size. Clang's `-Oz`.
-## Debugging and profiling
 """
 const JULIA_CPU_TARGET = EnvKeyString("JULIA_CPU_TARGET")
 

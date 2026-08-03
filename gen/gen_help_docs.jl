@@ -27,6 +27,10 @@ function gen_help_doc(f, io::IO, md::Markdown.MD)::Vector{EnvKeyString}
                 push!(all_keys, cur_key)
                 cur_content = []
             end
+        elseif c isa Markdown.Header{2}
+            cur_key !== nothing && apply_doc(f, io, cur_key, cur_content)
+            cur_key = nothing 
+            cur_content = []
         else
             if cur_key !== nothing
                 s = Markdown.plain(c)
