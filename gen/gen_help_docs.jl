@@ -2,7 +2,7 @@ using EnvironmentVariables
 using .EnvironmentVariables: EnvKeyString
 using Markdown
 
-# ../sources : julia directory
+# ~/.julia/dev/EnvironmentVariables main✔   ln -s  JULIA_SOURCE_PATH  sources
 doc_filepath = normpath(@__DIR__, "../sources/doc/src/manual/environment-variables.md")
 
 function apply_doc(f, io::IO, key::EnvKeyString, content)

@@ -20,6 +20,12 @@ julia> JULIA_DEBUG
   Enable debug logging for a file or module, see Logging for more information.
 ```
 
+
+### repositories
+ - ButterEffects 🧈  https://github.com/wookay/ButterEffects.jl
+ - EnvironmentVariables 🔡  https://github.com/wookay/EnvironmentVariables.jl
+
+
 [docs-latest-img]: https://img.shields.io/badge/docs-latest-blue.svg
 [docs-latest-url]: https://wookay.github.io/docs/EnvironmentVariables.jl/
 
