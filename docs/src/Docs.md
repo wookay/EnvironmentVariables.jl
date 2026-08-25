@@ -1,13 +1,68 @@
 ### EnvironmentVariables.Docs
 
+* Environment Variables · The Julia Language
+ <https://docs.julialang.org/en/v1/manual/environment-variables/>
+
 ```julia-repl
 julia> using EnvironmentVariables.Docs
 
 julia> JULIA_EDITOR
-  The editor returned by InteractiveUtils.editor() and used in, e.g., InteractiveUtils.edit, referring to the command of the preferred editor, for instance vim. $JULIA_EDITOR takes precedence over
-  $VISUAL, which in turn takes precedence over $EDITOR. If none of these environment variables is set, then the editor is taken to be open on Windows and OS X, or /etc/alternatives/editor if it
-  exists, or emacs otherwise. To use Visual Studio Code on Windows, set $JULIA_EDITOR to code.cmd.
+  The editor returned by ...
+```
 
-julia> JULIA_DEBUG
-  Enable debug logging for a file or module, see Logging for more information.
+```julia
+JULIA_BINDIR
+JULIA_PROJECT
+JULIA_LOAD_PATH
+JULIA_DEPOT_PATH
+JULIA_HISTORY
+JULIA_MAX_NUM_PRECOMPILE_FILES
+JULIA_VERBOSE_LINKING
+JULIA_CI
+JULIA_NUM_PRECOMPILE_TASKS
+JULIA_PRECOMPILE_THREADS
+JULIA_PKG_DEVDIR
+JULIA_PKG_IGNORE_HASHES
+JULIA_PKG_OFFLINE
+JULIA_PKG_PRECOMPILE_AUTO
+JULIA_PKG_SERVER
+JULIA_PKG_SERVER_REGISTRY_PREFERENCE
+JULIA_PKG_UNPACK_REGISTRY
+JULIA_PKG_USE_CLI_GIT
+JULIA_PKGRESOLVE_ACCURACY
+JULIA_PKG_PRESERVE_TIERED_INSTALLED
+JULIA_PKG_GC_AUTO
+JULIA_NO_VERIFY_HOSTS
+JULIA_SSL_NO_VERIFY_HOSTS
+JULIA_SSH_NO_VERIFY_HOSTS
+JULIA_ALWAYS_VERIFY_HOSTS
+JULIA_SSL_CA_ROOTS_PATH
+JULIA_SHELL
+JULIA_EDITOR
+JULIA_CPU_THREADS
+JULIA_WORKER_TIMEOUT
+JULIA_NUM_THREADS
+JULIA_THREAD_SLEEP_THRESHOLD
+JULIA_NUM_GC_THREADS
+JULIA_IMAGE_THREADS
+JULIA_IMAGE_TIMINGS
+JULIA_EXCLUSIVE
+JULIA_HEAP_SIZE_HINT
+JULIA_ERROR_COLOR
+JULIA_WARN_COLOR
+JULIA_INFO_COLOR
+JULIA_INPUT_COLOR
+JULIA_ANSWER_COLOR
+NO_COLOR
+FORCE_COLOR
+JULIA_CPU_TARGET
+JULIA_DEBUG
+JULIA_PROFILE_PEEK_HEAP_SNAPSHOT
+JULIA_TIMING_SUBSYSTEMS
+JULIA_GC_WAIT_FOR_DEBUGGER
+ENABLE_JITPROFILING
+ENABLE_GDBLISTENER
+JULIA_LLVM_ARGS
+JULIA_FALLBACK_REPL
+JULIA_LOAD_CODEGEN_LIB
 ```
