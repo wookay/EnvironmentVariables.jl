@@ -30,7 +30,8 @@ function gen_patches(title::String, patches)
 end
 
 function write_doc_src_patches(name::Symbol)
-    filepath = normpath(@__DIR__, "../docs/src/$name.md")
+    filename = string(name, ".md")
+    filepath = normpath(@__DIR__, "../docs/src/$filename")
     subs = []
     for (title, patches) in [
             ("src/", SRC_PATCHES)
@@ -40,13 +41,26 @@ function write_doc_src_patches(name::Symbol)
         push!(subs, sub)
     end
     title = "src/ cli/ ENV variables"
-    md = MD(Header{1}(title), subs...)
+    doc_top = """
+# $title
+
+```@contents
+Pages = ["$filename"]
+Depth = 2:3
+```
+
+```@index
+Pages = ["$filename"]
+```
+"""
+    md = MD(subs...)
     @info "save $title" filepath
-    write(filepath, string(generated_comments, md))
+    write(filepath, string(generated_comments, "\n", doc_top, "\n", md))
 end
 
 function write_doc_base_patches(name::Symbol)
-    filepath = normpath(@__DIR__, "../docs/src/$name.md")
+    filename = string(name, ".md")
+    filepath = normpath(@__DIR__, "../docs/src/$filename")
     subs = []
     for (title, patches) in [
             ("base/", BASE_PATCHES)]
@@ -55,13 +69,26 @@ function write_doc_base_patches(name::Symbol)
         push!(subs, sub)
     end
     title = "base/ ENV variables"
-    md = MD(Header{1}(title), subs...)
+    doc_top = """
+# $title
+
+```@contents
+Pages = ["$filename"]
+Depth = 2:3
+```
+
+```@index
+Pages = ["$filename"]
+```
+"""
+    md = MD(subs...)
     @info "save $title" filepath
-    write(filepath, string(generated_comments, md))
+    write(filepath, string(generated_comments, "\n", doc_top, "\n", md))
 end
 
 function write_doc_stdlib_patches(name::Symbol)
-    filepath = normpath(@__DIR__, "../docs/src/$name.md")
+    filename = string(name, ".md")
+    filepath = normpath(@__DIR__, "../docs/src/$filename")
     subs = []
     for (title, patches) in [
             ("Test", STDLIB_Test_PATCHES)
@@ -71,9 +98,21 @@ function write_doc_stdlib_patches(name::Symbol)
         push!(subs, sub)
     end
     title = "STDLIB ENV variables"
-    md = MD(Header{1}(title), subs...)
+    doc_top = """
+# $title
+
+```@contents
+Pages = ["$filename"]
+Depth = 2:3
+```
+
+```@index
+Pages = ["$filename"]
+```
+"""
+    md = MD(subs...)
     @info "save $title" filepath
-    write(filepath, string(generated_comments, md))
+    write(filepath, string(generated_comments, "\n", doc_top, "\n", md))
 end
 
 if true # false

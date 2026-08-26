@@ -1,7 +1,17 @@
 ```@raw html
 <!-- generated -->
 ```
+
 # base/ ENV variables
+
+```@contents
+Pages = ["base_patches.md"]
+Depth = 2:3
+```
+
+```@index
+Pages = ["base_patches.md"]
+```
 
 ## base/
 

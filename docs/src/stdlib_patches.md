@@ -1,7 +1,17 @@
 ```@raw html
 <!-- generated -->
 ```
+
 # STDLIB ENV variables
+
+```@contents
+Pages = ["stdlib_patches.md"]
+Depth = 2:3
+```
+
+```@index
+Pages = ["stdlib_patches.md"]
+```
 
 ## Test
 
