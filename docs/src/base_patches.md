@@ -315,6 +315,34 @@ base/initdefs.jl
     JULIA_DEPOT_PATH
     ```
 
+### v"0.7.0-DEV.3182"
+
+base/client.jl
+
+  * ```
+    JULIA_DEBUG_COLOR
+    ```
+
+### v"0.6.0-dev.1749"
+
+base/client.jl
+
+  * ```
+    JULIA_STACKFRAME_LINEINFO_COLOR
+    ```
+
+  * ```
+    JULIA_STACKFRAME_FUNCTION_COLOR
+    ```
+
+### v"0.6.0-dev.1545"
+
+base/client.jl
+
+  * ```
+    JULIA_ERROR_COLOR
+    ```
+
 ### v"0.4.0-dev+1914"
 
 base/stream.jl
@@ -351,6 +379,26 @@ base/threadcall.jl
     UV_THREADPOOL_SIZE
     ```
 
+### v"0.4.0-dev+678"
+
+base/client.jl
+
+  * ```
+    JULIA_WARN_COLOR
+    ```
+
+  * ```
+    JULIA_INFO_COLOR
+    ```
+
+### v"0.2.0+215"
+
+base/client.jl
+
+  * ```
+    JULIA_INPUT_COLOR
+    ```
+
 ### v"0.2.0-rc2+39"
 
 base/client.jl
@@ -365,4 +413,12 @@ base/client.jl
 
   * ```
     SHELL
+    ```
+
+### v"0.0.0"
+
+base/client.jl
+
+  * ```
+    JULIA_ANSWER_COLOR
     ```

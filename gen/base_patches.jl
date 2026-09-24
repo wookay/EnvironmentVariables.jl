@@ -198,6 +198,21 @@ const BASE_PATCHES = Vector{Patch}([
         Path"base/initdefs.jl",
         EnvKey"JULIA_DEPOT_PATH" => "function init_depot_path()"
     ),
+    Patch(v"0.7.0-DEV.3182",  # julia commit 9d2bc2cbd9    some logging things
+        Path"base/client.jl",
+        EnvKey"JULIA_DEBUG_COLOR" => "function debug_color()"
+    ),
+
+    # v0.6
+    Patch(v"0.6.0-dev.1749",  # julia commit dc7b4fbcf3    Try make REPL error easier to visually parse
+        Path"base/client.jl",
+        EnvKey"JULIA_STACKFRAME_LINEINFO_COLOR" => "function stackframe_lineinfo_color()",
+        EnvKey"JULIA_STACKFRAME_FUNCTION_COLOR" => "function stackframe_function_color()"
+    ),
+    Patch(v"0.6.0-dev.1545",  # julia commit 2fc856d739    introduce JULIA_ERROR_COLOR to control how errors are printed
+        Path"base/client.jl",
+        EnvKey"JULIA_ERROR_COLOR" => "function error_color()"
+    ),
 
     # v0.4
     Patch(v"0.4.0-dev+1914",  # julia commit 52fecaf2c6    deprecate tty_size, replace with iosize & export it
@@ -217,8 +232,17 @@ const BASE_PATCHES = Vector{Patch}([
         Path"base/threadcall.jl",
         EnvKey"UV_THREADPOOL_SIZE" => "const max_ccall_threads"
     ),
+    Patch(v"0.4.0-dev+678",   # julia commit 12cc0d3d19    Make info & warn colors configurable via ENV
+        Path"base/client.jl",
+        EnvKey"JULIA_WARN_COLOR" => "function warn_color()",
+        EnvKey"JULIA_INFO_COLOR" => "function info_color()"
+    ),
 
     # v0.2
+    Patch(v"0.2+215",         # julia commit 6f7f6a72ad    add JULIA_INPUT_COLOR. closes #2441
+        Path"base/client.jl",
+        EnvKey"JULIA_INPUT_COLOR" => "function input_color()"
+    ),
     Patch(v"0.2.0-rc2+39",    # julia commit 85d81b33e8    `;cmd`: let JULIA_SHELL over-ride the value of SHELL
         Path"base/client.jl",
         EnvKey"JULIA_SHELL" => "function repl_cmd(cmd::AbstractCmd, out)"
@@ -226,5 +250,11 @@ const BASE_PATCHES = Vector{Patch}([
     Patch(v"0.2.0-rc1+173",   # julia commit 37ae1e4abf    run `;cmd` through a shell
         Path"base/client.jl",
         EnvKey"SHELL" => "function repl_cmd(cmd::AbstractCmd, out)"
+    ),
+
+    # v0.0
+    Patch(v"0",               # julia commit 26c23f48bc    don't use ANSWER_COLOR global variable
+        Path"base/client.jl",
+        EnvKey"JULIA_ANSWER_COLOR" => "function answer_color()"
     ),
 ])

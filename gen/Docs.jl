@@ -248,7 +248,7 @@ const JULIA_THREAD_SLEEP_THRESHOLD = EnvKeyString("JULIA_THREAD_SLEEP_THRESHOLD"
 """
 const JULIA_NUM_GC_THREADS = EnvKeyString("JULIA_NUM_GC_THREADS")
 
-"""An unsigned 32-bit integer that sets the number of threads used by image compilation in this Julia process. The value of this variable may be ignored if the module is a small module. If left unspecified, the smaller of the value of [`JULIA_CPU_THREADS`](@ref JULIA_CPU_THREADS) or half the number of logical CPU cores is used in its place.
+"""An unsigned 32-bit integer that sets the number of threads used by image compilation in this Julia process. The value of this variable may be ignored if the module is a small module. If left unspecified, the smaller of the value of [`JULIA_CPU_THREADS`](@ref JULIA_CPU_THREADS) or half the number of logical CPU cores is used in its place. On 32-bit platforms the image is still split into this many shards, but they are compiled one at a time to bound memory use.
 During parallel package precompilation, workers additionally coordinate their CPU usage through a shared token pool sized by [`JULIA_PRECOMPILE_THREADS`](@ref JULIA_PRECOMPILE_THREADS), so their combined thread count stays bounded. If set, `JULIA_IMAGE_THREADS` limits the imaging threads for a single worker and does not affect the total thread limit.
 """
 const JULIA_IMAGE_THREADS = EnvKeyString("JULIA_IMAGE_THREADS")
