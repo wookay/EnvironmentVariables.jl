@@ -63,11 +63,12 @@ end
 
 struct Patch
     version::VersionNumber
+    commit::String
     filepath::PathString
     key_pairs::Vector{Pair{EnvKeyString, String}}
-    function Patch(version::VersionNumber, filepath::PathString, env_keys::Pair{EnvKeyString, String}...)
+    function Patch(version::VersionNumber, commit::String, filepath::PathString, env_keys::Pair{EnvKeyString, String}...)
         key_pairs::Vector{Pair{EnvKeyString, String}} = collect(env_keys)
-        new(version, filepath, key_pairs)
+        new(version, commit, filepath, key_pairs)
     end
 end
 

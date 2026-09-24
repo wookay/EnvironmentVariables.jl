@@ -3,7 +3,7 @@ include(normpath(@__DIR__, "src_patches.jl"))
 include(normpath(@__DIR__, "base_patches.jl"))
 include(normpath(@__DIR__, "stdlib_patches.jl"))
 
-using Markdown: MD, Header, Table, Code, List, Paragraph, htmlesc, @md_str
+using Markdown: MD, Header, Table, Code, List, Link, Paragraph, htmlesc, @md_str
 
 const generated_comments = """
 ```@raw html
@@ -14,19 +14,45 @@ const generated_comments = """
 function gen_patches(title::String, patches)
     contents = []
     for patch in patches
-        push!(contents, Header{3}(patch.version))
-        push!(contents, Paragraph(patch.filepath.s))
         env_key_added = []
         for pair in patch.key_pairs
             env_key = pair.first.s
             if env_key ∈ env_key_added
             else
-                push!(contents, List(Code("", env_key)))
                 push!(env_key_added, env_key)
             end
         end
+        h3 = string("`", patch.version, " ", join(env_key_added, ", "), "`")
+        push!(contents, Header{3}(h3))
+        push!(contents, Paragraph(
+            string(
+                "**", patch.filepath.s, "**",
+                "\$~~~~~~~~~~~\$",
+                " ( julia commit ",
+                "[", patch.commit, "](", "https://github.com/JuliaLang/julia/commit/", patch.commit, ")",
+                " )",
+            )
+        ))
+        for env_key in env_key_added
+            push!(contents, List(Code("", env_key)))
+        end
     end
     contents
+end
+
+function add_doc_top(title, filename)
+    """
+# $title
+
+```@contents
+Pages = ["$filename"]
+Depth = 2:3
+```
+
+```@index
+Pages = ["$filename"]
+```
+"""
 end
 
 function write_doc_src_patches(name::Symbol)
@@ -41,18 +67,7 @@ function write_doc_src_patches(name::Symbol)
         push!(subs, sub)
     end
     title = "src/ cli/ ENV variables"
-    doc_top = """
-# $title
-
-```@contents
-Pages = ["$filename"]
-Depth = 2:3
-```
-
-```@index
-Pages = ["$filename"]
-```
-"""
+    doc_top = add_doc_top(title, filename)
     md = MD(subs...)
     @info "save $title" filepath
     write(filepath, string(generated_comments, "\n", doc_top, "\n", md))
@@ -69,18 +84,7 @@ function write_doc_base_patches(name::Symbol)
         push!(subs, sub)
     end
     title = "base/ ENV variables"
-    doc_top = """
-# $title
-
-```@contents
-Pages = ["$filename"]
-Depth = 2:3
-```
-
-```@index
-Pages = ["$filename"]
-```
-"""
+    doc_top = add_doc_top(title, filename)
     md = MD(subs...)
     @info "save $title" filepath
     write(filepath, string(generated_comments, "\n", doc_top, "\n", md))
@@ -98,18 +102,7 @@ function write_doc_stdlib_patches(name::Symbol)
         push!(subs, sub)
     end
     title = "STDLIB ENV variables"
-    doc_top = """
-# $title
-
-```@contents
-Pages = ["$filename"]
-Depth = 2:3
-```
-
-```@index
-Pages = ["$filename"]
-```
-"""
+    doc_top = add_doc_top(title, filename)
     md = MD(subs...)
     @info "save $title" filepath
     write(filepath, string(generated_comments, "\n", doc_top, "\n", md))
