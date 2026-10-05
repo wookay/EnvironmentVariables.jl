@@ -15,6 +15,14 @@ Pages = ["base_patches.md"]
 
 ## base/
 
+### `1.14.0-DEV.3483 JULIA_EXIT_WITH_PARENT_PID`
+
+**base/loading.jl**$~~~~~~~~~~~$ ( julia commit [10896e7ad5](https://github.com/JuliaLang/julia/commit/10896e7ad5) )
+
+  * ```
+    JULIA_EXIT_WITH_PARENT_PID
+    ```
+
 ### `1.14.0-DEV.2857 JULIA_STACKTRACE_FULL_LOADING`
 
 **base/errorshow.jl**$~~~~~~~~~~~$ ( julia commit [da4b652b09](https://github.com/JuliaLang/julia/commit/da4b652b09) )

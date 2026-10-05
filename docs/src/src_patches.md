@@ -15,6 +15,14 @@ Pages = ["src_patches.md"]
 
 ## src/
 
+### `1.14.0-DEV.3483 JULIA_EXIT_WITH_PARENT_PID`
+
+**src/jlapi.c**$~~~~~~~~~~~$ ( julia commit [10896e7ad5](https://github.com/JuliaLang/julia/commit/10896e7ad5) )
+
+  * ```
+    JULIA_EXIT_WITH_PARENT_PID
+    ```
+
 ### `1.14.0-DEV.2614 JULIA_OBJCACHE_CAPACITY, JULIA_OBJCACHE, JULIA_OBJCACHE_LOG, JULIA_OBJCACHE_PATH`
 
 **src/objcache.cpp**$~~~~~~~~~~~$ ( julia commit [6aa38364cb](https://github.com/JuliaLang/julia/commit/6aa38364cb) )

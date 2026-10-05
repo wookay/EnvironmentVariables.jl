@@ -48,6 +48,11 @@ function runtests(tests = ["all"]; ncores::Int = ceil(Int, Sys.EFFECTIVE_CPU_THR
 
 const BASE_PATCHES = Vector{Patch}([
     # v1.14
+    Patch(v"1.14.0-DEV.3483",
+        "10896e7ad5", # loading: terminate precompilation workers when their parent dies
+        Path"base/loading.jl",
+        EnvKey"JULIA_EXIT_WITH_PARENT_PID" => signature_base_loading_create_expr_cache,
+    ),
     Patch(v"1.14.0-DEV.2857",
         "da4b652b09", # errorshow: collapse code loading frames in package stacktraces
         Path"base/errorshow.jl",

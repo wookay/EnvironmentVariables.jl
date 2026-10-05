@@ -6,6 +6,11 @@ using PathStrings
 
 const SRC_PATCHES = Vector{Patch}([
     # v1.14
+    Patch(v"1.14.0-DEV.3483",
+        "10896e7ad5", # loading: terminate precompilation workers when their parent dies
+        Path"src/jlapi.c",
+        EnvKey"JULIA_EXIT_WITH_PARENT_PID" => "static void exit_with_parent(void) JL_NOTSAFEPOINT",
+    ),
     Patch(v"1.14.0-DEV.2614",
         "6aa38364cb", # Add the objcache (LMDB-based cache for LLVM compilation)
         Path"src/objcache.cpp",
